@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0%;
+    scroll-behavior: smooth;
+}
+
+.homepage {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/787/571/763/background-blur-book-wallpaper-preview.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 15vh;
+    position: fixed;
+
+
+}
+
+.Heading {
+    background: rgba(0, 0, 0, 0.4);
+
+    width: 100%;
+    height: 20vh;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.Left {
+    vertical-align: top;
+
+    min-height: 100vh;
+    display: inline-block;
+    width: 39%;
+
+
+}
+
+.Right {
+    vertical-align: top;
+
+
+    min-height: 100vh;
+    display: inline-block;
+    width: 60%;
+
+
+
+}
+
+.Left p {
+    text-align: center;
+    color: rgb(11, 12, 11);
+    font-size: 50px;
+    font-family: 'Italianno', cursive;
+    font-weight: bolder;
+}
+
+.Heading p {
+    text-align: center;
+    color: rgb(64, 6, 241);
+
+    font-size: 50px;
+    font-family: 'Lobster', cursive;
+    font-weight: 800;
+
+}
+
+.navbar ul {
+    text-align: center;
+}
+
+.navbar ul li {
+
+    list-style: none;
+    display: inline-block;
+}
+
+
+
+.navbar ul li a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 25px;
+    transition: all ease 0.5s;
+
+
+
+}
+
+.navbar ul li a:hover {
+    background-color: #211b4385;
+
+}
+
+
+.Books {
+    background-image: url('https://thumbs.dreamstime.com/b/books-background-22199819.jpg');
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.cards {
+    position: relative;
+    left: 100px;
+    top: 3px;
+    width: 250px;
+    height: 450px;
+    background-color: rgb(17, 135, 135);
+    border-radius: 20px;
+    border-width: 4px;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+}
+
+.image img {
+    width: 100%;
+    height: 300px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+.cards:hover {
+    transform: translate3D(0, -1px, 0)scale(1.03);
+
+}
+
+.b {
+    width: 100px;
+    position: relative;
+    left: 150px;
+
+}
+
+.b:focus {
+    background-color: rgb(0, 255, 42);
+
+
+}
+
+.b:focus::after {
+    content: "ed";
+}
+
+.b::after {
+    content: "+";
+}
+
+
+.bar {
+    width: 80%;
+    height: 60px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: brown;
+    display: inline-block;
+
+
+}
+
+.bon {
+    position: relative;
+
+    display: inline-block;
+    top: 12.5px;
+    right: 80px;
+
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 210px 210px 210px 210px 210px;
+    grid-template-rows: 185 px 185 px;
+
+}
+
+.rcard {
+    position: relative;
+    left: 10px;
+    top: 3px;
+    width: 200px;
+    height: 181px;
+    background-color: rgb(4, 5, 5);
+    border-radius: 20px;
+    border-width: 7px;
+    border-style: solid;
+    display: inline-block;
+
+    padding: 5px;
+    transition: 0.5s ease-in-out;
+}
+
+.rimage img {
+    width: 100%;
+    height: 180px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: rgb(10, 10, 10);
+
+
+
+}
+
+.rcard:hover {
+    transform: translateY(20px);
+}
+
+.rcard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 176, 155, 0.5), rgba(150, 201, 61, 1));
+    z-index: 2;
+    transition: 0.5s all;
+    opacity: 0;
+}
+
+.rcard:hover:before {
+    opacity: 1;
+}
+
+.rtitle {
+    position: relative;
+    bottom: 180px;
+    z-index: 3;
+    color: azure;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.5s all;
+}
+
+.rtitle:hover {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.rb:focus {
+    background-color: rgb(0, 255, 42);
+
+
+}
+
+.rb:focus::after {
+    content: "ed";
+}
+
+.rb::after {
+    content: "+";
+}
+
+
+
+.rleft {
+    vertical-align: top;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/787/571/763/background-blur-book-wallpaper-preview.jpg");
+    min-height: 60vh;
+    display: inline-block;
+    width: 60%;
+
+}
+
+.rright {
+    vertical-align: top;
+    background-image: url("https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTd8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80");
+    min-height: 60vh;
+    display: inline-block;
+    width: 39%;
+    align-items: center;
+
+
+}
+
+.rrcard {
+    position: relative;
+    left: 100px;
+    top: 3px;
+    width: 250px;
+    height: 450px;
+    background-color: rgb(247, 6, 6);
+    border-radius: 20px;
+    border-width: 4px;
+    border-style: solid;
+    display: inline-block;
+    padding: 5px;
+
+}
+
+.rrimage img {
+    width: 60%;
+    height: 100px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    align-items: center;
+
+
+}
+
+.rrcard:hover {
+    transform: translate3D(0, -1px, 0)scale(1.03);
+    background-color: beige;
+
+}
+
+.footer {
+
+    width: 100%;
+    padding: 100px 15%;
+    background-color: black;
+    color: azure;
+    display: flex
+}
+
+.footer div {
+    text-align: center;
+}
+
+.c2 {
+    flex-grow: 0.5;
+}
+
+.c1 a {
+    display: block;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.c3 a {
+    display: flexbox;
+    justify-content: space-around;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.footer p {
+    text-align: center;
+}
+
+.quick {
+    background-color: rgb(5, 23, 17);
+    border-radius: 30px;
+    height: 10vh;
+    border-color: blue;
+    box-shadow: 10px 5px 5px rgb(243, 136, 6);
+}
+
+.quick a {
+
+    text-decoration: none;
+
+    color: rgba(230, 18, 32, 0.925);
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+
+    font-weight: 800;
+    padding: 25px;
+    transition: all ease 0.5s;
+
+
+}
+
+.quick:hover {
+    background-color: rgb(113, 108, 112);
+}
