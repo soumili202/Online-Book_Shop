@@ -1,0 +1,104 @@
+perfect question 👏 — once your SLM finishes training, you’ve basically got a tiny local language model sitting in memory.
+now you can generate text, save it, reload it, or fine-tune further.
+here’s the complete post-training workflow explained step-by-step 👇
+
+
+---
+
+🧠 1️⃣ understand what just happened
+
+after training, the script already prints:
+
+=== SAMPLE ===
+To be or not to be, the mind to suffer...
+==============
+
+that’s the model generating text conditioned on the --seed string.
+
+so you’ve already seen it work — that’s a forward pass using its learned weights.
+
+
+---
+
+💾 2️⃣ save the trained model
+
+add this near the end of slm.py (just above if __name__ == "__main__":)
+
+def save_model(model, path="slm.pth"):
+    torch.save(model.state_dict(), path)
+    print(f"Model saved to {path}")
+
+then after training:
+
+save_model(model)
+
+this saves the trained weights (~100–200 KB) locally.
+
+
+---
+
+🔄 3️⃣ load it later for generation
+
+create a small script generate.py:
+
+import torch
+from slm import TinyGPT, CharData, load_text
+
+device = "cpu"
+text = load_text()
+data = CharData(text)
+
+model = TinyGPT(vocab_size=data.vocab_size)
+model.load_state_dict(torch.load("slm.pth", map_location=device))
+model.eval()
+
+seed = "Audit"
+inp = data.encode(seed).unsqueeze(0)
+out = model.generate(inp.to(device), max_new_tokens=300)
+print(data.decode(out[0].tolist()))
+
+run:
+
+python generate.py
+
+✅ this reuses your trained weights and instantly generates new text without retraining.
+
+
+---
+
+🧪 4️⃣ experiment further
+
+you can now:
+
+change corpus (replace input.txt and retrain)
+
+tune hyperparameters, e.g.
+
+python slm.py --train-steps 1000 --n-layer 3 --n-head 4
+
+save checkpoints after each epoch if you want multiple versions
+
+plot training loss (log and visualize over steps)
+
+
+
+---
+
+⚡ 5️⃣ optional: use interactively
+
+add a short prompt loop inside generate.py:
+
+while True:
+    seed = input("You: ")
+    if seed.lower() in ["quit", "exit"]:
+        break
+    out = model.generate(data.encode(seed).unsqueeze(0), max_new_tokens=150)
+    print("Model:", data.decode(out[0].tolist()))
+
+now you have your own chat-like mini LLM running 100% offline 🧩
+
+
+---
+
+would you like me to show how to extend this so it accepts multi-sentence prompts (like a tiny conversation memory or audit Q&A)?
+
