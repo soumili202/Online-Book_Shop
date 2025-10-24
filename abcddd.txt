@@ -102,3 +102,144 @@ now you have your own chat-like mini LLM running 100% offline 🧩
 
 would you like me to show how to extend this so it accepts multi-sentence prompts (like a tiny conversation memory or audit Q&A)?
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RAG Orchestration Log Validation Guide — Clickyyy
+
+This document provides detailed guidelines for validating RAG (Retrieval-Augmented Generation) orchestration logs in Clickyyy, focusing on Data Collection stages across environments — Development, Pre-Production, and Production.
+
+Each request initiated via the Clickyyy UI or API triggers a Query Orchestration Flow, which internally logs various RAG pipeline stages (e.g., Retrieval, Augmentation, Generation, Ranking). These stages are correlated through a unique Interaction ID, captured during the Data Collection process.
+
+This document describes how to:
+
+Capture the Interaction ID from the Query endpoint response in the Network tab.
+
+Use the Interaction ID to locate the corresponding Data Collection logs in Splunk.
+
+Verify the RAG stage progression and ensure the full orchestration pipeline is being logged consistently across environments.
+
+
+
+---
+
+2. Objective
+
+The primary objective of this procedure is to:
+
+Verify that data collection and RAG stages are properly logged under a unique Interaction ID.
+
+Ensure traceability of each Clickyyy query from the UI trigger to downstream orchestration components.
+
+Confirm end-to-end logging parity across all environments (Dev, Preprod, Prod).
+
+Facilitate debugging, observability, and RCA for issues related to orchestration and data collection.
+
+
+
+---
+
+3. Environments
+
+Environment        Splunk Instance        Purpose
+
+Development (DEV)        Splunk QA        For initial testing and local orchestration validation.
+Pre-Production (PREPROD)        Splunk QA        For UAT and staging-level verification before go-live.
+Production (PROD)        Splunk PROD        For live observability, troubleshooting, and performance monitoring.
+
+
+
+---
+
+4. Key Concepts
+
+Interaction ID
+
+A unique UUID generated for each query orchestration request.
+
+It acts as a correlation identifier to trace all sub-events (retrieval, ranking, summarization, etc.) within the orchestration lifecycle.
+
+
+RAG Orchestration Flow
+
+A multi-stage process within Clickyyy that includes:
+
+1. Query Initialization – Input from the UI or API is received.
+
+
+2. Data Collection – Relevant content is retrieved from connected sources.
+
+
+3. Contextual Augmentation – Retrieved results are ranked and embedded.
+
+
+4. Response Generation – Final output is produced using LLMs.
+
+
+5. Response Dispatch – Output is sent back to the user.
+
+
+
+Each of these stages logs events with the same Interaction ID for full traceability.
+
+
+---
+
+5. Pre-Requisites
+
+Valid access to Splunk QA and Production instances.
+
+Access to Clickyyy UI or API endpoints in all environments.
+
+Knowledge of the Query endpoint path (typically /query or /data-collection).
+
+Browser with Developer Tools → Network Tab (Chrome recommended).
+
+
+
+---
+
+6. Steps for Verification
+
+Step 1: Trigger a Query
+
+1. Log in to the Clickyyy UI in the desired environment.
+
+
+2. Enter a query that triggers the RAG orchestration (for example:
+“Show documents related to invoice processing”).
+
+
+3. Wait until the response is returned to the UI.
+
+
+
+
+---
+
+Do you want me to include the screenshots section (where you’ll attach UI and Splunk screenshots) next, formatted as a separate numbered section (e.g., “7. Evidence & Screenshots”)?
+I can also add placeholders and captions like:
+
+> “Attach Screenshot 1: Query endpoint Network tab showing Interaction ID”
+“Attach Screenshot 2: Splunk log entry for the same Interaction ID (Dev)”
+
+
+
+Would you like me to add that?
+
+
